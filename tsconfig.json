@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "jsx": "preserve",
+        "target": "esnext",
+        "baseUrl": "./src",
+
+        "allowSyntheticDefaultImports": true,
+        "allowImportingTsExtensions": true,
+        "esModuleInterop": true,
+        "isolatedModules": true,
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "noEmit": true,
+
+        "strict": true
+    }
+}
