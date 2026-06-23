@@ -35,6 +35,30 @@ const updatePreview = (dataUrl: string | null) => {
     }
 };
 
+const confirmDialog = (message: string): Promise<boolean> => {
+    return new Promise(resolve => {
+        const overlay = document.getElementById("confirm-overlay")!;
+        const msgEl = document.getElementById("confirm-message")!;
+        const okBtn = document.getElementById("confirm-ok")!;
+        const cancelBtn = document.getElementById("confirm-cancel")!;
+
+        msgEl.textContent = message;
+        overlay.classList.remove("confirm-hidden");
+
+        const cleanup = () => {
+            overlay.classList.add("confirm-hidden");
+            okBtn.removeEventListener("click", onOk);
+            cancelBtn.removeEventListener("click", onCancel);
+        };
+
+        const onOk = () => { cleanup(); resolve(true); };
+        const onCancel = () => { cleanup(); resolve(false); };
+
+        okBtn.addEventListener("click", onOk);
+        cancelBtn.addEventListener("click", onCancel);
+    });
+};
+
 const showMessage = (text: string, type: "success" | "error") => {
     const msg = document.getElementById("message")!;
     msg.textContent = text;
@@ -60,7 +84,7 @@ const loadPotions = async () => {
         card.innerHTML = `
             <div class="admin-potion-info">
                 <strong>${potion.name}</strong>
-                <span>${potion.price} moedas</span>
+                <span class="price">🪙 ${potion.price} moedas</span>
             </div>
             <button class="delete-btn" data-id="${potion.id}">Remover</button>
         `;
@@ -70,7 +94,7 @@ const loadPotions = async () => {
     document.querySelectorAll(".delete-btn").forEach(btn => {
         btn.addEventListener("click", async () => {
             const id = (btn as HTMLElement).dataset.id!;
-            if (!confirm("Tem certeza que deseja remover esta poção?")) return;
+            if (!await confirmDialog("Tem certeza que deseja remover esta poção?")) return;
 
             const response = await fetch(`/api/potions/${id}`, {
                 method: "DELETE",

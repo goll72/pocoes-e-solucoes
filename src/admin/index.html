@@ -16,7 +16,6 @@
   
   <body>
     <div id="admin-header">
-      <a href="/" id="back-link">← Voltar</a>
       <h1 class="gothic">Administração</h1>
     </div>
 
@@ -66,5 +65,15 @@
       <h2 class="gothic thin">Poções Cadastradas</h2>
       <div id="potion-list-admin"></div>
     </section>
+
+    <div id="confirm-overlay" class="confirm-hidden">
+      <div id="confirm-dialog">
+        <p id="confirm-message"></p>
+        <div id="confirm-actions">
+          <button id="confirm-cancel">Não</button>
+          <button id="confirm-ok">Sim</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

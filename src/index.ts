@@ -15,9 +15,14 @@ export const main = async () => {
         card.className = "potion-card";
         card.innerHTML = `
             ${potion.image ? `<img class="potion-image" src="${potion.image}" alt="${potion.name}">` : ""}
-            <h2>${potion.name}</h2>
-            <p>${potion.description}</p>
-            <p class="price">${potion.price} moedas de ouro</p>
+            <div class="potion-body">
+                <h2>${potion.name}</h2>
+                <p>${potion.description}</p>
+                <div class="price-row">
+                    <span class="price">🪙 ${potion.price} moedas</span>
+                    <button class="buy-btn">Comprar</button>
+                </div>
+            </div>
         `;
         list.appendChild(card);
     }

@@ -57,7 +57,7 @@ app.get("/api/potions/list", async (req, res) => {
     res.json(potions.map(x => ({
         id: x.id,
         name: x.name,
-        image: x.image ? `${PUBLIC_SERVER_URL}/api/potions/${x.id}/image` : null,
+        image: x.image != null && x.image.length ? `${PUBLIC_SERVER_URL}/api/potions/${x.id}/image` : null,
         description: x.description,
         price: x.price
     })));
