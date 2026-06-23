@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin - Poções & Soluções</title>
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <link rel="icon" href="assets/favicon.png">
+
+    <script type="module" src="index.ts"></script>
+  </head>
+  
+  <body>
+    <div id="admin-header">
+      <a href="/" id="back-link">← Voltar</a>
+      <h1 class="gothic">Administração</h1>
+    </div>
+
+    <section id="admin-section">
+      <h2 class="gothic thin">Cadastrar Nova Poção</h2>
+
+      <form id="create-form">
+        <label>
+          Nome da Poção
+          <input type="text" name="name" required>
+        </label>
+
+        <label>
+          Descrição
+          <textarea name="description" rows="4"></textarea>
+        </label>
+
+        <label>
+          Preço (moedas de ouro)
+          <input type="number" name="price" min="0" required>
+        </label>
+
+        <fieldset id="image-fieldset">
+          <legend>Imagem (opcional)</legend>
+
+          <label>
+            URL da imagem
+            <input type="url" name="image-url" id="image-url">
+          </label>
+
+          <span id="image-sep">— ou —</span>
+
+          <label>
+            Arquivo local
+            <input type="file" name="image-file" id="image-file" accept="image/*">
+          </label>
+
+          <img id="image-preview" hidden>
+          <button type="button" id="clear-image" hidden>Remover imagem</button>
+        </fieldset>
+
+        <button type="submit">Cadastrar Poção</button>
+      </form>
+
+      <div id="message"></div>
+
+      <h2 class="gothic thin">Poções Cadastradas</h2>
+      <div id="potion-list-admin"></div>
+    </section>
+  </body>
+</html>

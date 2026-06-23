@@ -1,0 +1,162 @@
+#admin-header {
+    text-align: center;
+    padding: 1em 0;
+    background-color: var(--bg-contrast);
+    position: relative;
+}
+
+#back-link {
+    position: absolute;
+    left: 1em;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--fg);
+    font-size: 0.6em;
+}
+
+#admin-section {
+    margin: auto;
+    width: max(50vw, 20em);
+    padding: 2em 1.5em;
+}
+
+#admin-section h2 {
+    font-size: 1.5em;
+    text-align: center;
+    margin: 1em 0;
+}
+
+#create-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+#create-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    font-size: 0.7em;
+}
+
+#create-form input,
+#create-form textarea {
+    font-size: 1rem;
+    padding: 0.4em 0.6em;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: var(--bg);
+    color: var(--fg);
+}
+
+#create-form button {
+    font-size: 0.8em;
+    padding: 0.6em 1.2em;
+    border: none;
+    border-radius: 4px;
+    background-color: #222;
+    color: #fff;
+    cursor: pointer;
+    align-self: center;
+}
+
+#create-form button:hover {
+    background-color: #5d9c6e;
+}
+
+.message {
+    margin-top: 1em;
+    text-align: center;
+    font-size: 0.7em;
+    padding: 0.5em;
+    border-radius: 4px;
+}
+
+.message.success {
+    background-color: #2d4a2d;
+    color: #8bc88b;
+}
+
+.message.error {
+    background-color: #4a2d2d;
+    color: #c88b8b;
+}
+
+#image-fieldset {
+    border: 1px solid #555;
+    border-radius: 4px;
+    padding: 0.8em 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6em;
+}
+
+#image-fieldset legend {
+    font-size: 0.8em;
+    padding: 0 0.3em;
+}
+
+#image-sep {
+    text-align: center;
+    font-size: 0.7em;
+    opacity: 0.6;
+}
+
+#image-preview {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 4px;
+    object-fit: contain;
+}
+
+#clear-image {
+    font-size: 0.6em;
+    padding: 0.3em 0.8em;
+    border: none;
+    border-radius: 4px;
+    background-color: #4a2d2d;
+    color: #c88b8b;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+#clear-image:hover {
+    background-color: #6a3d3d;
+}
+
+#potion-list-admin {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+}
+
+.admin-potion-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 1em;
+    background-color: var(--bg-contrast);
+    border-radius: 4px;
+    font-size: 0.7em;
+}
+
+.admin-potion-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+}
+
+.delete-btn {
+    font-size: 0.7em;
+    padding: 0.4em 0.8em;
+    border: none;
+    border-radius: 4px;
+    background-color: #5a2d2d;
+    color: #e8a0a0;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.delete-btn:hover {
+    background-color: #7a3d3d;
+}

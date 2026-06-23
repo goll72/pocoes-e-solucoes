@@ -47,20 +47,72 @@ schema.potions.bulkCreate([
 // Route setup for the web service
 
 const app = express();
+app.use(express.json({ limit: "10mb" }));
 
 app.get("/api/potions/list", async (req, res) => {
     const potions = await schema.potions.findAll({
-        attributes: ["id", "name", "description", "price"]
+        attributes: ["id", "name", "description", "price", "image"]
     });
 
     res.json(potions.map(x => ({
+        id: x.id,
         name: x.name,
-        image: `${PUBLIC_SERVER_URL}/api/potions/${x.id}/image`,
+        image: x.image ? `${PUBLIC_SERVER_URL}/api/potions/${x.id}/image` : null,
         description: x.description,
         price: x.price
     })));
 });
 
+app.get("/api/potions/:id/image", async (req, res) => {
+    const potion = await schema.potions.findByPk(req.params.id);
+
+    if (!potion || !potion.image) {
+        return res.status(404).end();
+    }
+
+    const buffer = Buffer.isBuffer(potion.image)
+        ? potion.image
+        : Buffer.from(potion.image as ArrayBuffer);
+
+    res.type("application/octet-stream").send(buffer);
+});
+
+app.post("/api/potions/create", async (req, res) => {
+    const { name, description, price, image } = req.body;
+
+    if (!name || price == null) {
+        return res.status(400).json({ error: "name and price are required" });
+    }
+
+    let imageBuffer: Buffer | null = null;
+    if (image) {
+        const matches = image.match(/^data:([a-z]+\/[a-z0-9-+.]+);base64,(.+)$/i);
+        if (matches) {
+            imageBuffer = Buffer.from(matches[2], "base64");
+        }
+    }
+
+    const potion = await schema.potions.create({
+        name,
+        description: description ?? null,
+        price: Number(price),
+        image: imageBuffer,
+    });
+
+    res.json({ id: potion.id, name: potion.name, description: potion.description, price: potion.price });
+});
+
+app.delete("/api/potions/:id", async (req, res) => {
+    const potion = await schema.potions.findByPk(req.params.id);
+
+    if (!potion) {
+        return res.status(404).json({ error: "potion not found" });
+    }
+
+    await potion.destroy();
+    res.json({ ok: true });
+});
+
 app.listen(8080, () => {
     console.log("Listening on port 8080...");
-})
+});

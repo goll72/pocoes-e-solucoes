@@ -97,3 +97,134 @@ h1::after {
         text-align: justify;
     }
 }
+
+#top-bar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 0.5em 1em;
+    z-index: 100;
+}
+
+#top-bar a {
+    color: var(--fg);
+    font-size: 0.5em;
+    opacity: 0.6;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+#top-bar a:hover {
+    opacity: 1;
+}
+
+#potion-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+.potion-card {
+    background-color: var(--bg);
+    padding: 1em;
+    border-radius: 8px;
+    width: 18em;
+    flex-shrink: 0;
+}
+
+.potion-image {
+    width: 100%;
+    height: 10em;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 0.5em;
+}
+
+.potion-card h2 {
+    font-size: 0.8em;
+    margin: 0 0 0.5em;
+}
+
+.potion-card p {
+    font-size: 0.5em;
+    margin: 0 0 0.5em;
+    text-align: left;
+}
+
+.potion-card .price {
+    font-size: 0.6em;
+    font-weight: bold;
+    color: #c8a86e;
+    margin: 0;
+}
+
+#main-footer {
+    background-color: #1a1a1c;
+    color: var(--fg);
+    font-size: 0.4em;
+    padding: 2em 1.5em 0;
+}
+
+.footer-content {
+    margin: auto;
+    width: max(75vw, 8em);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    justify-content: space-between;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 12em;
+}
+
+.footer-col h3 {
+    font-size: 2.4em;
+    margin: 0 0 0.5em;
+    text-align: left;
+}
+
+.footer-col h3::before,
+.footer-col h3::after {
+    content: none;
+}
+
+.footer-col h4 {
+    font-size: 1.2em;
+    margin: 0 0 0.5em;
+}
+
+.footer-col p {
+    font-size: 0.9em;
+    margin: 0.3em 0;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 1em 0;
+    margin-top: 1em;
+    border-top: 1px solid var(--bg-contrast);
+}
+
+.footer-bottom p {
+    font-size: 0.8em;
+    opacity: 0.6;
+}
+
+.footer-col.contact-info {
+    p {
+        margin: 0.6em 0;
+    }
+
+    .wa-info {
+        position: relative;
+    
+        & > svg {
+            position: relative;
+            top: 0.25em;
+        }
+    }
+}
