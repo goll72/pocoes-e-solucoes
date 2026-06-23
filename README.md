@@ -57,7 +57,7 @@ Para matar os processos dos servidores, use Ctrl+C e `kill %`.
    Por ser um projeto mais simples, foi adotada uma arquitetura MPA, sem
    uso de bibliotecas de UI reativa.
 
-   - `assets`: arquivos de recursos estáticos, como o favicon e fontes.
+   - `public/assets`: arquivos de recursos estáticos, como o favicon e fontes.
 
  - `backend`: código da backend (web service), usando SQLite em memória como
    base de dados.
