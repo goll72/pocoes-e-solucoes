@@ -1,7 +1,10 @@
-import { Model, Sequelize } from "sequelize";
+import { Sequelize } from "sequelize";
 import { defineSchema } from "./db/schema.ts";
 
 import express from "express";
+
+// Should be changed in production
+const PUBLIC_SERVER_URL = "http://localhost:3000"
 
 const sequelize = new Sequelize({
     dialect: "sqlite",
@@ -47,12 +50,15 @@ const app = express();
 
 app.get("/api/potions/list", async (req, res) => {
     const potions = await schema.potions.findAll({
-        attributes: ["name", "description", "price"]
+        attributes: ["id", "name", "description", "price"]
     });
 
-    for (const potion of potions) {
-        console.log(potion.id);
-    }
+    res.json(potions.map(x => ({
+        name: x.name,
+        image: `${PUBLIC_SERVER_URL}/api/potions/${x.id}/image`,
+        description: x.description,
+        price: x.price
+    })));
 });
 
 app.listen(8080, () => {

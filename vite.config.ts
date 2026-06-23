@@ -13,7 +13,6 @@ export default {
         outDir: "../dist",
         emptyOutDir: true,
     },
-    publicDir: "assets",
     root: "src",
     resolve: {
         tsconfigPaths: true,
